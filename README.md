@@ -1,3 +1,2 @@
-
 #Personal Resume Website
 A simple and professional resume website built with HTML, CSS, jQuery, and JavaScript. This single-page application features multiple sections including Home, Bio, Resume, Skills, and Contact pages with smooth navigation and a responsive design. The website includes a working contact form, animated transitions, and an organized display of professional experience and technical skills. To deploy, simply upload the index.html file to GitHub Pages or any web hosting service. Perfect for showcasing your professional profile online with an easy-to-customize structure.

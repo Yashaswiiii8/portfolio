@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashaswi  - Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-top: 1rem;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .info-item {
+            padding: 0.5rem;
+            background: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        .info-item strong {
+            color: #2c3e50;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .skill-item {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+        }
+
+        .experience-item, .education-item {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Yashaswi</div>
+            <ul class="nav-links">
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="bio">Bio</a></li>
+                <li><a href="#" data-page="resume">Resume</a></li>
+                <li><a href="#" data-page="skills">Skills</a></li>
+                <li><a href="#" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="profile-section">
+                <div class="profile-img">JD</div>
+                <div class="profile-info">
+                    <h1>Yashaswi</h1>
+                    <h2>Full Stack Developer</h2>
+                    <p>Welcome to my professional portfolio. I am a passionate developer with expertise in web technologies and software development. Explore my bio, resume, and skills to learn more about my experience and capabilities.</p>
+                    <div class="info-grid" style="margin-top: 1.5rem;">
+                        <div class="info-item">
+                            <strong>Location:</strong> Bangalore, IN
+                        </div>
+                        <div class="info-item">
+                            <strong>Email:</strong> yashaswidirghayu007@gmail.com
+                        </div>
+                        <div class="info-item">
+                            <strong>Phone:</strong> 7250912559
+                        </div>
+                        <div class="info-item">
+                            <strong>Experience:</strong> Beginner
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio Page -->
+        <div id="bio" class="page">
+            <h1>Biography</h1>
+            
+            <h2>About Me</h2>
+            <p>I am a dedicated and beginner Full Stack Developer passionate about creating robust web applications. My journey in just beignning in tech field and I have discovered my passion for solving complex problems through code.</p>
+            
+           
+            
+            <h2>Personal Interests</h2>
+            <ul>
+                <li>Open Source Contribution</li>
+                <li>Tech Blogging and Writing</li>
+                <li>Photography</li>
+                <li>Hiking and Outdoor Activities</li>
+                <li>Reading Technology and Science Fiction</li>
+            </ul>
+            
+            <h2>Philosophy</h2>
+            <p>I believe in continuous learning and staying updated with the latest industry trends. My approach to development emphasizes clean code, user experience, and scalable architecture. I enjoy collaborating with cross-functional teams and mentoring junior developers.</p>
+        </div>
+
+        <!-- Resume Page -->
+        <div id="resume" class="page">
+            <h1>Resume</h1>
+            
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Beginner Full Stack Developer</h3>
+                
+            </div>
+            
+            <div class="experience-item">
+                <h3>Full Stack Developer</h3>
+                
+            </div>
+            
+            <div class="experience-item">
+                <h3>Junior Web Developer</h3>
+                <div class="date">Web Studios | Jan 2018 - May 2019</div>
+                <ul>
+                    <li>Built custom WordPress themes and plugins</li>
+                    <li>Created responsive landing pages for marketing campaigns</li>
+                    <li>Performed website maintenance and bug fixes</li>
+                    <li>Built database design and optimization</li>
+                </ul>
+            </div>
+            
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <div class="date">Bangalore Institue of Technology, 2023-2027</div>
+               
+                <p>Relevant Coursework: Data Structures, Algorithms, Database Systems, Web Development, Software Engineering</p>
+            </div>
+            
+            <h2>Certifications</h2>
+            <ul>
+               
+                <li>Google Cloud Agent AI (2025)</li>
+            </ul>
+        </div>
+
+        <!-- Skills Page -->
+        <div id="skills" class="page">
+            <h1>Technical Skills</h1>
+            
+            <h2>Programming Languages</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>JavaScript</strong>
+                    <p>Advanced proficiency in ES6+, async programming</p>
+                </div>
+                <div class="skill-item">
+                    <strong>Python</strong>
+                    <p>Django, Flask, Data Analysis</p>
+                </div>
+               
+                <div class="skill-item">
+                    <strong>SQL</strong>
+                    <p>MySQL, PostgreSQL, Complex Queries</p>
+                </div>
+            </div>
+            
+            <h2>Frontend Technologies</h2>
+            <div class="skills-grid">
+               
+                <div class="skill-item">
+                    <strong>HTML5 & CSS3</strong>
+                    <p>Semantic HTML, Flexbox, Grid</p>
+                </div>
+                <div class="skill-item">
+                    <strong>jQuery</strong>
+                    <p>DOM Manipulation, AJAX</p>
+                </div>
+              
+            </div>
+            
+            <h2>Backend Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Node.js</strong>
+                    <p>Express, RESTful APIs</p>
+                </div>
+                <div class="skill-item">
+                    <strong>MongoDB</strong>
+                    <p>NoSQL Design, Aggregation</p>
+                </div>
+                
+               
+            </div>
+            
+            <h2>Tools & Platforms</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Git & GitHub</strong>
+                    <p>Version Control, Collaboration</p>
+                </div>
+            </div>    
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <h1>Contact Me</h1>
+            
+            <p>Feel free to reach out to me for opportunities, collaborations, or just to say hello!</p>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            
+            <h2 style="margin-top: 2rem;">Other Ways to Connect</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Email:</strong> yashaswidirghayu007@gmail.com
+                </div>
+                <div class="info-item">
+                    <strong>Phone:</strong> 7250912559
+                </div>
+                <div class="info-item">
+                    <strong>LinkedIn:</strong> https://www.linkedin.com/in/yashaswi-dirghayu-861a891b4/
+                </div>
+                <div class="info-item">
+                    <strong>GitHub:</strong>https://github.com/Yashaswiiii8
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Yashaswi. All rights reserved.</p>
+        <div class="social-links">
+            
+            <a href="#">GitHub</a>
+            
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Navigation
+            $('.nav-links a').click(function(e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                
+                $('.page').removeClass('active');
+                $('#' + page).addClass('active');
+                
+                $('html, body').animate({ scrollTop: 0 }, 300);
+            });
+            
+            // Form submission
+            $('#contactForm').submit(function(e) {
+                e.preventDefault();
+                
+                var name = $('#name').val();
+                var email = $('#email').val();
+                var subject = $('#subject').val();
+                var message = $('#message').val();
+                
+                alert('Thank you, ' + name + '! Your message has been received. I will get back to you soon.');
+                
+                $(this)[0].reset();
+            });
+            
+            // Smooth hover effect on skill items
+            $('.skill-item').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-5px)');
+                    $(this).css('box-shadow', '0 4px 8px rgba(0,0,0,0.2)');
+                    $(this).css('transition', 'all 0.3s');
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                    $(this).css('box-shadow', 'none');
+                }
+            );
+        });
+    </script>
+</body>
+</html>
